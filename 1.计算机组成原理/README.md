@@ -12,3 +12,5 @@
 
 总体而言，计算机组成原理主要关注计算机硬件的实现原理，而计算机体系架构则更侧重于计算机系统整体结构和软件编程接口。两者之间密切相关，相互依存，但是有各自独特的侧重点。
 ![image](https://user-images.githubusercontent.com/107925483/229364722-4b9cb030-a3ba-4489-b8a5-0a26a5962448.png)
+![image](https://user-images.githubusercontent.com/107925483/229365953-fbd0d416-d386-4f85-b684-7e06b2490947.png)
+
