@@ -1,0 +1,129 @@
+``` golang
+package main // Go程序入口必须在main包中
+
+import (
+	"fmt"
+	"math/rand"
+	"sync"
+	"time"
+)
+
+// 定义一个全局变量
+var globalVar int
+
+// 定义一个结构体
+type person struct {
+	name string
+	age  int
+}
+
+// 定义一个接口
+type animal interface {
+	speak() string
+}
+
+// 定义一个实现接口的结构体
+type dog struct {
+	name string
+}
+
+// 实现 animal 接口
+func (d dog) speak() string {
+	return "汪汪汪"
+}
+
+func main() {
+	// 输出 Hello, World!
+	fmt.Println("Hello, World!")
+
+	// 定义变量
+	var a int
+	a = 10
+	b := 20
+
+	// 输出变量
+	fmt.Printf("a = %d, b = %d\n", a, b)
+
+	// 定义数组
+	var arr [5]int
+	arr[0] = 1
+	arr[1] = 2
+	arr[2] = 3
+	arr[3] = 4
+	arr[4] = 5
+
+	// 输出数组
+	fmt.Println(arr)
+
+	// 定义切片
+	slice := make([]int, 3, 5)
+	slice[0] = 1
+	slice[1] = 2
+	slice[2] = 3
+
+	// 输出切片
+	fmt.Println(slice)
+
+	// 定义 map
+	m := make(map[string]int)
+	m["one"] = 1
+	m["two"] = 2
+
+	// 输出 map
+	fmt.Println(m)
+
+	// 定义结构体
+	p := person{
+		name: "张三",
+		age:  20,
+	}
+
+	// 输出结构体
+	fmt.Println(p)
+
+	// 定义接口变量
+	var a1 animal
+	d1 := dog{
+		name: "旺财",
+	}
+	a1 = d1
+
+	// 输出接口变量
+	fmt.Println(a1.speak())
+
+	// 定义 goroutine
+	wg := sync.WaitGroup{}
+	wg.Add(10)
+	for i := 0; i < 10; i++ {
+		go func(i int) {
+			defer wg.Done()
+			time.Sleep(time.Duration(rand.Intn(3)) * time.Second)
+			fmt.Printf("goroutine %d 执行完成\n", i)
+		}(i)
+	}
+	wg.Wait()
+
+	// 定义 channel
+	ch := make(chan int)
+	go func() {
+		ch <- 1
+		ch <- 2
+		ch <- 3
+		close(ch)
+	}()
+	for i := range ch {
+		fmt.Println(i)
+	}
+
+	// 定义错误类型
+	err := fmt.Errorf("错误信息")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	// 定义 defer
+	defer fmt.Println("最后执行的 defer")
+	fmt.Println("函数执行完毕")
+}
+
+```
